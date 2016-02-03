@@ -30,4 +30,24 @@ public class PulseCircle extends Entity {
 		if(diameter < lowerDiameter)
 			isGrowing = !isGrowing;
 	}
+	public void update(Input input, float speed) {
+		diameter += isGrowing ? speed : -speed;
+
+		if(diameter > upperDiameter)
+			isGrowing = !isGrowing;
+		if(diameter < lowerDiameter)
+			isGrowing = !isGrowing;
+	}
+	public void update(Input input, float speed, float expandSpeed, boolean isExpanding) {
+		if(isExpanding) {
+			diameter += expandSpeed;
+		}
+		else {
+			update(input, speed);
+		}
+	}
+
+	public float getRadius() {
+		return diameter/2;
+	}
 }

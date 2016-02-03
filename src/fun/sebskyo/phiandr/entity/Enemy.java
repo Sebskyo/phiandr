@@ -26,6 +26,7 @@ public class Enemy extends CCEntity {
 		g.fillOval(x-diameter/2, y-diameter/2, diameter, diameter);
 	}
 	public void update(Input input) {
+		speed += 100/Math.pow(length, 2);
 		length -= speed;
 		if(length < 0.1f)
 			genVar();

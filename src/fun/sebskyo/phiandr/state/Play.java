@@ -18,7 +18,7 @@ public class Play extends BasicGameState {
 		id = state;
 	}
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		player = new Player(123, 123, 50, gc.getWidth()/2, gc.getHeight()/2, 0.1f, 0);
+		player = new Player(123, 123, 50, gc.getWidth()/2, gc.getHeight()/2, 0.1f, (float)Math.PI/2);
 		enemy = new Enemy[10];
 		for (int i = 0; i < enemy.length; i++)
 			enemy[i] = new Enemy(10, gc.getWidth()/2, gc.getHeight()/2);
@@ -33,8 +33,18 @@ public class Play extends BasicGameState {
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		Input input = gc.getInput();
 		player.update(input);
-		for (int i = 0; i < enemy.length; i++)
+		for (int i = 0; i < enemy.length; i++) {
 			enemy[i].update(input);
+			if(Math.pow(enemy[i].getX() - player.getX(), 2) + Math.pow(enemy[i].getY() - player.getY(), 2) < Math.pow((double) player.getHeight()/2, 2)) {
+				sbg.getState(2).init(gc, sbg);
+				sbg.enterState(2);
+			}
+		}
+
+		if(input.isKeyDown(input.KEY_ESCAPE)) {
+			sbg.getState(0).init(gc, sbg);
+			sbg.enterState(0);
+		}
 	}
 
 	public int getID() {
