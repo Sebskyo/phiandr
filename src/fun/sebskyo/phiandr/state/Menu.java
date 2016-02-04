@@ -3,6 +3,7 @@ package fun.sebskyo.phiandr.state;
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+import org.newdawn.slick.util.FontUtils;
 
 import fun.sebskyo.phiandr.Main;
 import fun.sebskyo.phiandr.entity.PulseCircle;
@@ -19,6 +20,8 @@ public class Menu extends BasicGameState {
 		id = state;
 	}
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+		Main.score = 0;
+
 		try {
 			img = new Image("res/logo.png");
 		}

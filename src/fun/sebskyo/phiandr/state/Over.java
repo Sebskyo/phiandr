@@ -2,6 +2,7 @@ package fun.sebskyo.phiandr.state;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+import org.newdawn.slick.util.FontUtils;
 
 import fun.sebskyo.phiandr.Main;
 
@@ -26,14 +27,13 @@ public class Over extends BasicGameState {
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		g.setBackground(color);
 		g.setColor(Main.BLACK);
-		g.drawString(String.valueOf(shade), 10, 50);
 		if(!isFading) {
-			g.drawString("u lost", 10, 10);
+			FontUtils.drawCenter(Main.font, String.valueOf(Main.score), gc.getWidth() / 2, 50, 0, Main.BLACK);
 		}
-		g.setColor(Main.WHITE);
-		g.fillRect(50, 100, 50, 50);
 	}
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+		Input input = gc.getInput();
+
 		timer++;
 		if(isFading)
 			shade -= 0.1;
