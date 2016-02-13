@@ -10,6 +10,7 @@ public class Over extends BasicGameState {
 
 	private static int id;
 	private long timer; // TEMPORARY
+	private long start;
 	private float shade;
 	private boolean isFading;
 	private Color color;
@@ -18,7 +19,8 @@ public class Over extends BasicGameState {
 		id = state;
 	}
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		timer = 0;
+		timer = System.currentTimeMillis();
+		start = System.currentTimeMillis();
 		shade = 0xff;
 		isFading = true;
 		color = new Color((int)shade, (int)shade, (int)shade);
@@ -29,21 +31,23 @@ public class Over extends BasicGameState {
 		g.setColor(Main.BLACK);
 		if(!isFading) {
 			FontUtils.drawCenter(Main.font, String.valueOf(Main.score), gc.getWidth() / 2, 50, 0, Main.BLACK);
+			FontUtils.drawCenter(Main.font, String.valueOf(((1000-(timer-start))/1000)+5), gc.getWidth()/2, 80, 0, Main.BLACK);
 		}
 	}
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 		Input input = gc.getInput();
 
-		timer++;
-		if(isFading)
+		if(isFading) {
 			shade -= 0.1;
+		}
 		if(shade <= 0xf3) {
 			isFading = false;
 		}
 
 		color = new Color((int)shade, (int)shade, (int)shade);
 
-		if(timer > 1000) {
+		timer = System.currentTimeMillis();
+		if(timer - start > 6000) {
 			sbg.getState(0).init(gc, sbg);
 			sbg.enterState(0);
 		}
