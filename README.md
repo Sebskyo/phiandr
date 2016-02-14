@@ -19,6 +19,7 @@ I'm asuming you can read and have read the above guide, so here's a list of what
 * Right: move clockwise
 * Up: move away from the center
 * Down: move closer to the center
+
 ## License
 > φ&r - a game about circular movement
 > Copyright (C) 2016  Sebastian Elleholm
