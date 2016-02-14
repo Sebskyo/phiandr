@@ -5,7 +5,7 @@
 ### The game itself
 φ&r is a traditional small "move about to avoid falling things", except it is plotted on a [polar coordinate system](https://en.wikipedia.org/wiki/Polar_coordinate_system).
 ### The more technical stuff
-φ&r is entirely written in Java (yes Java, the language everyone loves to hate) using the [Slick2D]() library, which itself builds upon [LWJGL 2]().
+φ&r is entirely written in Java (yes Java, the language everyone loves to hate) using the [Slick2D](http://slick.ninjacave.com/) library, which itself builds upon [LWJGL 2](http://legacy.lwjgl.org/).
 ## How do I download this?
 Easy, go to the releases page, and choose one of the downloads. All executables are called "phiandr.jar".
 ## How do I play?
